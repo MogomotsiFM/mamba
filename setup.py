@@ -240,6 +240,7 @@ if not SKIP_CUDA_BUILD:
             ),
         }
 
+    torch_dir = os.path.dirname(torch.__file__)
     ext_modules.append(
         CUDAExtension(
             name="selective_scan_cuda",
@@ -257,6 +258,7 @@ if not SKIP_CUDA_BUILD:
             ],
             extra_compile_args=extra_compile_args,
             include_dirs=[Path(this_dir) / "csrc" / "selective_scan"],
+            extra_objects=[torch_dir / "lib" / "libtorch_cuda.so", torch_dir / "lib" / "libtorch.so"],
         )
     )
 
