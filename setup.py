@@ -258,7 +258,7 @@ if not SKIP_CUDA_BUILD:
             ],
             extra_compile_args=extra_compile_args,
             include_dirs=[Path(this_dir) / "csrc" / "selective_scan"],
-            extra_objects=[torch_dir / "lib" / "libtorch_cuda.so", torch_dir / "lib" / "libtorch.so"],
+            extra_objects=[Path(torch_dir) / "lib" / "libtorch_cuda.so", Path(torch_dir) / "lib" / "libtorch.so"],
         )
     )
 
