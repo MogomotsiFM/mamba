@@ -261,7 +261,7 @@ if not SKIP_CUDA_BUILD:
             extra_compile_args=extra_compile_args,
             include_dirs=[
                 Path(this_dir) / "csrc" / "selective_scan", 
-                os.environ("TORCH_INCLUDE_DIRS")
+                #os.environ["TORCH_INCLUDE_DIRS"]
             ],
             libraries=["torch_cuda", "torch"],
         )
