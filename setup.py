@@ -264,6 +264,7 @@ if not SKIP_CUDA_BUILD:
                 #os.environ["TORCH_INCLUDE_DIRS"]
             ],
             libraries=["torch_cuda", "torch"],
+            #cmake_args=["-DCUDA_LAUNCH_BLOCKING=1", "-DTORCH_USE_CUDA_DSA=ON"],
         )
     )
 
