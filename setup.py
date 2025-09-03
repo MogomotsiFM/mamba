@@ -176,6 +176,8 @@ if not SKIP_CUDA_BUILD:
             cc_flag.append("-gencode")
             cc_flag.append("arch=compute_53,code=sm_53")
             cc_flag.append("-gencode")
+            cc_flag.append("arch=compute_60,code=sm_60")
+            cc_flag.append("-gencode")
             cc_flag.append("arch=compute_62,code=sm_62")
             cc_flag.append("-gencode")
             cc_flag.append("arch=compute_70,code=sm_70")
@@ -257,7 +259,10 @@ if not SKIP_CUDA_BUILD:
                 "csrc/selective_scan/selective_scan_bwd_bf16_complex.cu",
             ],
             extra_compile_args=extra_compile_args,
-            include_dirs=[Path(this_dir) / "csrc" / "selective_scan"],
+            include_dirs=[
+                Path(this_dir) / "csrc" / "selective_scan", 
+                os.environ("TORCH_INCLUDE_DIRS")
+            ],
             libraries=["torch_cuda", "torch"],
         )
     )
